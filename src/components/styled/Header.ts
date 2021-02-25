@@ -1,8 +1,14 @@
 import styled from 'styled-components';
+import { DefaultTheme } from 'styled-components';
 
-const Header = styled.h1`
-   text-align: center;
+interface HeaderProps {
+   theme: DefaultTheme
+}
+
+const Header = styled.h1<HeaderProps>`
    font-size: 4em;
+   margin: 0px 32px;
+   color: ${({ theme }) => theme.colors.white}
 `;
 
 
