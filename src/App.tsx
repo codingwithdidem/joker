@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from "axios";
-import Joke from "./components/Joke";
+import JokeItem from "./components/JokeItem";
 import face from "./images/laugh.svg";
 import Wrapper from "./components/styled/Wrapper";
 import Header from "./components/styled/Header";
@@ -10,16 +10,37 @@ import Form from "./components/styled/Form"
 import Search from "./components/styled/Search"
 import Button from "./components/styled/Button"
 
-const JOKE_ENDPOINT = 'https://v2.jokeapi.dev/joke/Programming';
+const BASE_URL = 'https://v2.jokeapi.dev/joke/Any?type=twopart';
 
+enum Category { Any, Misc, Programming, Dark, Pun, Spooky, Christmas };
 
+type Flag = {
+  explicit: boolean,
+  nsfw: boolean,
+  political: boolean,
+  rasist: boolean,
+  religious: boolean,
+  sexist: boolean,
+}
+
+type Joke = {
+  id: number,
+  category: Category,
+  delivery: string,
+  setup: string,
+  lang: string,
+  safe: boolean,
+  flags: Flag,
+  type: "single" | "twopart"
+
+}
 interface IProps {
 
 }
 
 const App: React.FC<IProps> = () => {
   const [search, setSearch] = useState('');
-  const [jokes, setJokes] = useState([]);
+  const [jokes, setJokes] = useState<Joke[]>([]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(event.target.value);
@@ -28,9 +49,15 @@ const App: React.FC<IProps> = () => {
   const getJokes = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const { data } = await axios.get(JOKE_ENDPOINT);
+    const ENDPOINT = `${BASE_URL}?contains=${search}&amount=10`
+
+    const { data } = await axios.get(ENDPOINT);
     setJokes(data.jokes)
+
+    setSearch('');
   }
+
+  console.log(jokes)
 
   return (
     <div >
@@ -43,6 +70,13 @@ const App: React.FC<IProps> = () => {
           <Search type="text" placeholder="Search.." value={search} onChange={handleChange} />
           <Button type="submit">Submit</Button>
         </Form>
+
+        {/* Jokes */}
+        <div>
+          {jokes.map(joke => (
+            <JokeItem key={joke.id} joke={joke} />
+          ))}
+        </div>
       </Wrapper>
     </div>
   )
