@@ -15,8 +15,9 @@ type Flag = {
 type Joke = {
     id: number,
     category: Category,
-    delivery: string,
-    setup: string,
+    delivery?: string,
+    setup?: string,
+    joke?: string,
     lang: string,
     safe: boolean,
     flags: Flag,
@@ -35,13 +36,22 @@ const JokeItem: React.FC<JokeItemProps> = ({ joke }) => {
     return (
         <CardWrapper>
             <CardTop>
-                <Setup>
-                    {joke.setup}
-                </Setup>
+                {
+                    joke.type === "single" ? (
+                        <p>{joke.joke}</p>
+                    ) : (
+                            <>
+                                <Setup>
+                                    {joke.setup}
+                                </Setup>
 
-                <Delivery>
-                    {joke.delivery}
-                </Delivery>
+                                <Delivery>
+                                    {joke.delivery}
+                                </Delivery>
+                            </>
+
+                        )
+                }
             </CardTop>
 
             <CardBottom>
