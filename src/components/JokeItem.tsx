@@ -1,38 +1,14 @@
 import React from 'react'
 import { CardWrapper, CardTop, CardBottom, Setup, Delivery } from "./styled/Card"
-
-enum Category { Any, Misc, Programming, Dark, Pun, Spooky, Christmas };
-
-type Flag = {
-    explicit: boolean,
-    nsfw: boolean,
-    political: boolean,
-    rasist: boolean,
-    religious: boolean,
-    sexist: boolean,
-}
-
-type Joke = {
-    id: number,
-    category: Category,
-    delivery?: string,
-    setup?: string,
-    joke?: string,
-    lang: string,
-    safe: boolean,
-    flags: Flag,
-    type: "single" | "twopart"
-
-}
+import { Joke, FlagKeys } from "../common/types"
 
 interface JokeItemProps {
     joke: Joke
 }
 
-
 const JokeItem: React.FC<JokeItemProps> = ({ joke }) => {
-    //@ts-ignore
-    const flags = Object.keys(joke.flags).filter((key) => joke.flags[key]).join(' , ')
+
+    const flags = Object.keys(joke.flags).filter((key) => joke.flags[key as FlagKeys]).join(' , ')
     return (
         <CardWrapper>
             <CardTop>
@@ -49,11 +25,9 @@ const JokeItem: React.FC<JokeItemProps> = ({ joke }) => {
                                     {joke.delivery}
                                 </Delivery>
                             </>
-
                         )
                 }
             </CardTop>
-
             <CardBottom>
                 <p>{joke.category}</p>
                 <div>

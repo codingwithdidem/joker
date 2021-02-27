@@ -1,9 +1,14 @@
 import styled from 'styled-components';
+import { DefaultTheme } from 'styled-components';
 
-const Button = styled.button`
+interface ButtonProps {
+  theme: DefaultTheme,
+}
+
+const Button = styled.button<ButtonProps>`
   padding: 10px;
-  background-color: #53239C;
-  color: #fff;
+  background-color: ${({ theme }) => theme.colors.secondary};
+  color: ${({ theme }) => theme.colors.white};
   border-radius: 5px;
   border: none;
 `;

@@ -2,38 +2,19 @@ import React, { useState, useEffect } from 'react'
 import axios from "axios";
 import JokeItem from "./components/JokeItem";
 import face from "./images/laugh.svg";
-import Wrapper from "./components/styled/Wrapper";
-import Header from "./components/styled/Header";
-import Image from "./components/styled/Image";
-import Row from "./components/styled/Row";
-import Form from "./components/styled/Form"
-import Search from "./components/styled/Search"
-import Button from "./components/styled/Button"
+import {
+  Wrapper,
+  Header,
+  Image,
+  Row,
+  Form,
+  Search,
+  Button
+} from "./components/styled/index"
+import { Joke } from "./common/types"
 
 const BASE_URL = 'https://v2.jokeapi.dev/joke/Any';
 
-enum Category { Any, Misc, Programming, Dark, Pun, Spooky, Christmas };
-
-type Flag = {
-  explicit: boolean,
-  nsfw: boolean,
-  political: boolean,
-  rasist: boolean,
-  religious: boolean,
-  sexist: boolean,
-}
-
-type Joke = {
-  id: number,
-  category: Category,
-  delivery: string,
-  setup: string,
-  lang: string,
-  safe: boolean,
-  flags: Flag,
-  type: "single" | "twopart"
-
-}
 interface IProps {
 
 }

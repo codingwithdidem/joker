@@ -1,7 +1,12 @@
 import styled from 'styled-components';
+import { DefaultTheme } from 'styled-components';
 
-const CardWrapper = styled.div`
-  background: #fff;
+interface CardProps {
+  theme: DefaultTheme
+}
+
+const CardWrapper = styled.div<CardProps>`
+  background: ${props => props.theme.colors.white};
   border-radius: 5px;
   margin: 15px 0px;
   width: 650px;
@@ -11,11 +16,12 @@ const CardWrapper = styled.div`
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  cursor: pointer;
 `;
 
-const CardTop = styled.div`
+const CardTop = styled.div<CardProps>`
   text-align: center;
-  background: #fff;
+  background: ${props => props.theme.colors.white};
   padding: 10px;
   display: flex;
   flex-direction: row;
@@ -28,20 +34,22 @@ const CardTop = styled.div`
   }
 `;
 
-const Setup = styled.p`
-  font-size: 18px;
-  flex: 1;
-`;
-
-const Delivery = styled.p`
+const Setup = styled.p<CardProps>`
   font-size: 16px;
   flex: 1;
+  
+`;
+
+const Delivery = styled.p<CardProps>`
+  font-size: 16px;
+  flex: 1;
+  font-weight: 500;
 `;
 
 
 
-const CardBottom = styled.div`
-  background: #53239C;
+const CardBottom = styled.div<CardProps>`
+  background: ${props => props.theme.colors.secondary};
   color: #fff;
   font-size: 16px;
   display: flex;
