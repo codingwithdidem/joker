@@ -8,10 +8,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - Styled-Components
 - React (Hooks)
 
-
 ## How to run this project?
+
 ```bash
- 
+
   git clone https://github.com/codingwithdidem/joker.git
   cd /joker
   npm install
@@ -23,6 +23,4 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## See Demo
 
-[Link to Demo](http://google.com)
-
-
+[Link to Demo](https://amiajoketoyou.vercel.app/)
