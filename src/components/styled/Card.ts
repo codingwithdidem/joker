@@ -1,12 +1,12 @@
-import styled from 'styled-components';
-import { DefaultTheme } from 'styled-components';
+import styled from "styled-components";
+import { DefaultTheme } from "styled-components";
 
 interface CardProps {
-  theme: DefaultTheme
+  theme: DefaultTheme;
 }
 
 const CardWrapper = styled.div<CardProps>`
-  background: ${props => props.theme.colors.white};
+  background: ${(props) => props.theme.colors.white};
   border-radius: 5px;
   margin: 15px 0px;
   width: 650px;
@@ -21,7 +21,7 @@ const CardWrapper = styled.div<CardProps>`
 
 const CardTop = styled.div<CardProps>`
   text-align: center;
-  background: ${props => props.theme.colors.white};
+  background: ${(props) => props.theme.colors.white};
   padding: 10px;
   display: flex;
   flex-direction: row;
@@ -37,7 +37,6 @@ const CardTop = styled.div<CardProps>`
 const Setup = styled.p<CardProps>`
   font-size: 16px;
   flex: 1;
-  
 `;
 
 const Delivery = styled.p<CardProps>`
@@ -46,10 +45,8 @@ const Delivery = styled.p<CardProps>`
   font-weight: 500;
 `;
 
-
-
 const CardBottom = styled.div<CardProps>`
-  background: ${props => props.theme.colors.secondary};
+  background: ${(props) => props.theme.colors.secondary};
   color: #fff;
   font-size: 16px;
   display: flex;
@@ -57,12 +54,4 @@ const CardBottom = styled.div<CardProps>`
   padding: 10px;
 `;
 
-
-
-export {
-  CardWrapper,
-  CardTop,
-  CardBottom,
-  Setup,
-  Delivery
-}
+export { CardWrapper, CardTop, CardBottom, Setup, Delivery };

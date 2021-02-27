@@ -1,15 +1,14 @@
-import styled from 'styled-components';
-import { DefaultTheme } from 'styled-components';
+import styled from "styled-components";
+import { DefaultTheme } from "styled-components";
 
 interface HeaderProps {
-   theme: DefaultTheme
+  theme: DefaultTheme;
 }
 
 const Header = styled.h1<HeaderProps>`
-   font-size: 4em;
-   margin: 0px 32px;
-   color: ${({ theme }) => theme.colors.main}
+  font-size: 4em;
+  margin: 0px 32px;
+  color: ${({ theme }) => theme.colors.main};
 `;
-
 
 export default Header;

@@ -1,9 +1,8 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const Image = styled.img`
-   width: 55px;
-   height: 55px;
+  width: 100px;
+  height: 100px;
 `;
-
 
 export default Image;

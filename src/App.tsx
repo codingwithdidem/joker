@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from "react";
 import axios from "axios";
 import JokeItem from "./components/JokeItem";
-import face from "./images/laugh.svg";
+import owl from "./images/owl.svg";
 import {
   Wrapper,
   Header,
@@ -9,68 +9,66 @@ import {
   Row,
   Form,
   Search,
-  Button
-} from "./components/styled/index"
-import { Joke } from "./common/types"
+  Button,
+} from "./components/styled/index";
+import { Joke } from "./common/types";
 
-const BASE_URL = 'https://v2.jokeapi.dev/joke/Any';
+const BASE_URL = "https://v2.jokeapi.dev/joke/Any";
 
-interface IProps {
-
-}
+interface IProps {}
 
 const App: React.FC<IProps> = () => {
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState("");
   const [error, setError] = useState(false);
   const [jokes, setJokes] = useState<Joke[]>([]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(event.target.value);
-  }
+  };
 
   const getJokes = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-
-    const ENDPOINT = `${BASE_URL}?contains=${search}&amount=10`
+    const ENDPOINT = `${BASE_URL}?contains=${search}&amount=10`;
 
     const { data } = await axios.get(ENDPOINT);
     if (data.error) {
-      setError(true)
+      setError(true);
       setJokes([]);
     } else {
-      setError(false)
-      setJokes(data.jokes)
+      setError(false);
+      setJokes(data.jokes);
     }
 
-    setSearch('');
-
-  }
+    setSearch("");
+  };
 
   return (
-    <div >
+    <div>
       <Wrapper>
         <Row>
           <Header>Joker</Header>
-          <Image src={face} alt="Laughing Face" />
+          <Image src={owl} alt="Laughing Face" />
         </Row>
         <Form onSubmit={getJokes}>
-          <Search type="text" placeholder="Search.." value={search} onChange={handleChange} />
+          <Search
+            type="text"
+            placeholder="Search.."
+            value={search}
+            onChange={handleChange}
+          />
           <Button type="submit">Submit</Button>
         </Form>
 
         {/* Jokes */}
         <div>
-          {error && (
-            <p>Sorry, no jokes found.</p>
-          )}
-          {jokes.length > 0 && jokes.map(joke => (
-            <JokeItem key={joke.id} joke={joke} />
-          ))}
+          {error && <p>Sorry, no jokes found.</p>}
+          {jokes.length > 0 &&
+            jokes.map((joke) => <JokeItem key={joke.id} joke={joke} />)}
         </div>
       </Wrapper>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;

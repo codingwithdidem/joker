@@ -1,8 +1,8 @@
-import styled from 'styled-components';
-import { DefaultTheme } from 'styled-components';
+import styled from "styled-components";
+import { DefaultTheme } from "styled-components";
 
 interface ButtonProps {
-  theme: DefaultTheme,
+  theme: DefaultTheme;
 }
 
 const Button = styled.button<ButtonProps>`
