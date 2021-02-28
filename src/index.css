@@ -19,4 +19,7 @@ body {
     #ff9d29,
     #d5de1c
   );
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
 }
