@@ -10,7 +10,6 @@ const Wrapper = styled.div<WrapperProps>`
   flex-direction: column;
   align-items: center;
   max-width: 80rem;
-  height: 80rem;
   padding: 20px;
   margin: 0 auto;
 `;
