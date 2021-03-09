@@ -10,7 +10,7 @@ const Search = styled.input<SearchProps>`
   padding: 10px;
   width: 15rem;
   border-radius: 5px;
-  border: 1px solid ${(props) => props.theme.colors.secondary};
+  border: 1px solid ${(props) => props.theme.colors?.secondary};
 `;
 
 export default Search;

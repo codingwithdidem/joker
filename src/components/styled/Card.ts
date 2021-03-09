@@ -46,7 +46,7 @@ const Delivery = styled.p<CardProps>`
 `;
 
 const CardBottom = styled.div<CardProps>`
-  background: ${(props) => props.theme.colors.secondary};
+  background: ${(props) => props.theme.colors?.secondary};
   color: #fff;
   font-size: 16px;
   display: flex;
